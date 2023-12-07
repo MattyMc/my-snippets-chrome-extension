@@ -75,10 +75,9 @@ const editSnippet = (snippetId) => {
   
     // Update stored snippets
     localStorage.setItem("snippets", JSON.stringify(snippets));
-    location.reload(); // Consider a more efficient way to refresh the data on the page
   
-    // Reload snippets to reflect the deletion
-    loadSnippets();
+    // Remove the deleted snippet
+    document.getElementById(`snippet-${snippetId}`).remove()
   
     console.log(`Deleted snippet: ${snippetId, snippetName}`);
   };

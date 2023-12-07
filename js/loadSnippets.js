@@ -10,7 +10,7 @@ const loadSnippets = (() => {
     const snippetListItems = snippets.map((snippet) => {
       // Append each snippet as a list item
       return `
-      <li style="display: flex; align-items: center; justify-content: space-between;">
+      <li id="snippet-${snippet.id}" style="display: flex; align-items: center; justify-content: space-between;">
         <div style="flex-grow: 1;">
           <button onclick="utils.copyToClipboard('${snippet.id}', this)" class="snippet-button copy-button" onmouseleave="(() => { this.classList.remove('button-check') })()">
             Copy
