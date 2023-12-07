@@ -14,9 +14,10 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
   </head>
   <body style="border: 5px solid black; margin-left: auto; margin-right: auto; margin-top: 20px">
-    <div class="header" style="margin-bottom: 1rem">
+    <div>
+
+    <div class="header" style="margin-bottom: 1.8rem">
       <h1 style="font-size: 2rem; margin-bottom: 0.5rem">My Snippets</h1>
-      <p style="margin: 0">By Matt McInnis</p>
     </div>
 
     <!-- All the snippets go here! -->
@@ -39,6 +40,8 @@
           required
           autocomplete="one-time-code" />
 
+        <input id="snippetId" name="snippetId" type="hidden" autocomplete="one-time-code" />
+
         <label for="snippetContent">Snippet</label>
         <input id="snippetContent" name="snippetContent" type="hidden" autocomplete="one-time-code" />
         <div id="new-snippet-input"></div>
@@ -48,12 +51,17 @@
     </div>
 
     <div class="footer" style="display: flex; justify-content: flex-end; font-size: 1rem">
-      <span>Made with <span style="color: red; opacity: 0.8">❤️</span> in Toronto, Canada</span>
+      <p style="margin: 0; text-align: right; opacity:0.8; font-size: 14px;">
+         By Matt McInnis <br>
+        <span>Made with <span style="color: red; opacity: 0.8">❤️</span> in Toronto, Canada</span>
+      </p>
     </div>
+  </div>
 
     <script src="js/utils.js"></script>
     <script src="js/createSnippet.js"></script>
     <script src="js/loadSnippets.js"></script>
+    <script src="js/snippetManager.js"></script>
 
     <!-- ionicicons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

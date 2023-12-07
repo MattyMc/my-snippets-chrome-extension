@@ -4,7 +4,7 @@ const createSnippet = (() => {
       modules: {
         toolbar: [
           ["bold", "italic"],
-          ["link", "blockquote", "code-block", "image"],
+          ["link", "blockquote", "code-block"],
           [{ list: "ordered" }, { list: "bullet" }],
         ],
         keyboard: {
@@ -42,13 +42,21 @@ const createSnippet = (() => {
   function submitSnippetForm(quill) {
     const name = document.querySelector("input[name=snippetName]").value.trim();
     const content = quill.root.innerHTML;
-
-    if (name && content) {
-      utils.saveNewSnippet(name, content);
-    } else {
+    // Get the snippet's ID if we're editing, or
+    // Generate a unique ID for the new snippet
+    let id = document.querySelector("input[name=snippetId]").value.trim(); 
+    id = id || Date.now().toString();
+  
+    if (!name || !content) {
       alert("Please enter both name and content for the snippet.");
+      return;
     }
+  
+  
+    // Save the new snippet with the generated ID
+    utils.saveOrUpdateSnippet(id, name, content);
   }
+  
 
   return {
     initializeQuill,
