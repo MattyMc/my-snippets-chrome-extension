@@ -1,0 +1,148 @@
+body {
+  width: 600px; /* Adjusted width */
+  padding: 10px;
+}
+
+:root {
+  --standard-border-radius: 6px;
+  --bg: #fffefc; /* the background */
+  --accent: #C2EABD; /* button colour */
+  --accent: #fffbd9; /* button colour */
+  --accent: #011936; /* button colour */
+  --text: #011936; /* text colour */
+  --border: blue;
+  --base-font-size: 16px;
+  --image-button-font-size: 1.4rem;
+}
+
+.snippet-button {
+  font-size: calc(var(--base-font-size) - 2px);
+  border-radius: 3px;
+  font-weight: 500;
+  background: none;
+  color: #011936;
+  border-color: #011936;
+  margin: 0;
+  padding: 0.1rem 0.4rem;
+}
+
+.copy-button {
+  width: 5rem;
+  transition: 0.3s;
+}
+
+.edit-button {
+  width: 3rem;
+  transition: 0.3s;
+}
+
+.copy-button:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;  
+  right: -5px;
+}
+
+.button-check:after {
+  content: '☑️';
+}
+
+.copy-button:hover{
+  filter: none; /* remove this default filter */
+  padding-right: 24px;
+  padding-left:8px;
+  transition: 0.3s;
+}
+
+.copy-button:hover:after {
+  transition: 0.3s;
+  opacity: 1;
+  right: 10px;
+}
+
+.snippet-name {
+  margin-left: 0.8rem;
+  font-weight: 500;
+}
+
+#snippets li {
+  margin-bottom: 0.4rem;
+}
+
+#form-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.image-button {
+  width: calc(var(--image-button-font-size) + 0.4rem);
+  transition: 250ms;
+  font-size: var(--image-button-font-size);
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+  display: inline-flex; /* Keeps the button's size as per the container/defined size */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Quill Overrides (see js/quill/quill.snow.js) */
+.ql-editor {
+  font-size: 18px;
+  min-height: 8rem;
+  /* font-size: 16px; Set your desired font size */
+}
+
+#new-snippet-form button {
+  margin-top: 0.5rem;
+} 
+
+/* remove padding at top of editor */
+.ql-editor p:first-child {
+  padding-top: 0px;
+}
+/* 
+here you set what paragraph spacing you want.
+DO NOT USE MARGIN INSIDE OF EDITOR OR IT WILL ADD NEWLINES:
+https://github.com/quilljs/quill/issues/1157
+*/
+.ql-editor p, .ql-editor ul, .ql-editor ol {
+  padding-top: 12px;
+}
+.ql-editor h1, .ql-editor h2, .ql-editor h3 {
+  padding-top: 16px;
+}
+
+
+/* ANIMATION */
+.edit-button:hover {
+  /* transform: rotate(14deg); */
+  font-size: calc(var(--image-button-font-size) + 0.32rem);
+  stroke-width: 6px; /* affects the pencil */
+  --ionicon-stroke-width: 36px; /* affects the box */
+  /* animation-name: wiggle;
+  animation-duration: 1000ms;
+  animation-iteration-count: 1;
+  animation-timing-function: linear; */
+}
+
+.delete-button:hover {
+  transform: rotate(15deg) translate(0px, 2px);
+  font-size: calc(var(--image-button-font-size) + 0.2rem);
+  /* font-size: calc(var(--image-button-font-size) + 0rem);  */
+  /* --ionicon-stroke-width: 50px; */
+  /* animation-name: wiggle;
+  animation-duration: 1000ms;
+  animation-iteration-count: 1;
+  animation-timing-function: linear; */
+}
+
+
+@keyframes wiggle {
+  0% {transform: rotate(0deg);}
+  /* 25% {transform: rotate(-10deg);}
+  50% {transform: rotate(20deg);}
+  75% {transform: rotate(-5deg);} */
+  100% {transform: rotate(10deg);} 
+}
