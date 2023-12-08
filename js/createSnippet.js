@@ -23,6 +23,15 @@ const createSnippet = (() => {
       theme: "snow",
     });
 
+    quill.on("text-change", function (delta, oldDelta, source) {
+      if (source == "api") {
+        console.log("An API call triggered this change.");
+      } else if (source == "user") {
+        debugger;
+        console.log("A user action triggered this change.");
+      }
+    });
+
     const form = document.getElementById("new-snippet-form");
     form.onsubmit = (event) => {
       if (event) event.preventDefault();
@@ -44,19 +53,17 @@ const createSnippet = (() => {
     const content = quill.root.innerHTML;
     // Get the snippet's ID if we're editing, or
     // Generate a unique ID for the new snippet
-    let id = document.querySelector("input[name=snippetId]").value.trim(); 
+    let id = document.querySelector("input[name=snippetId]").value.trim();
     id = id || Date.now().toString();
-  
+
     if (!name || !content) {
       alert("Please enter both name and content for the snippet.");
       return;
     }
-  
-  
+
     // Save the new snippet with the generated ID
     utils.saveOrUpdateSnippet(id, name, content);
   }
-  
 
   return {
     initializeQuill,

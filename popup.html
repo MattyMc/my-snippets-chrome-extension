@@ -9,54 +9,61 @@
     <script src="js/quill/quill.min.js"></script>
 
     <!-- Stylesheets -->
-    <!-- <link rel="stylesheet" href="css/pico.min.css" /> -->
     <link rel="stylesheet" href="css/simple.min.css" />
+    <!-- General style overrides -->
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <!-- Monkey patching ionic's icons -->
+    <link rel="stylesheet" type="text/css" href="css/ionicon-overrides.css" />
+    <!-- Snippet buttons (E.g. edit, delete, etc) -->
+    <link rel="stylesheet" type="text/css" href="css/snippet-list.css" />
+    <!-- Quill is our snippet editor -->
+    <link rel="stylesheet" type="text/css" href="css/quill-overrides.css" />
   </head>
   <body style="border: 5px solid black; margin-left: auto; margin-right: auto; margin-top: 20px">
     <div>
+      <div class="header" style="margin-bottom: 1.8rem">
+        <h1 style="font-size: 2rem; margin-bottom: 0.5rem">My Snippets</h1>
+      </div>
 
-    <div class="header" style="margin-bottom: 1.8rem">
-      <h1 style="font-size: 2rem; margin-bottom: 0.5rem">My Snippets</h1>
-    </div>
+      <!-- All the snippets go here! -->
+      <div id="snippet-container" style="margin-bottom: 0.5rem">
+        <div style="margin-bottom: 0.5rem" id="snippets"></div>
+        <div style="display: flex; justify-content: flex-end">
+          <button class="snippet-button" id="removeAll">Remove All</button>
+        </div>
+      </div>
+      📚
+      <!-- This form creates/edits snippets -->
+      <div id="form-container">
+        <form id="new-snippet-form" style="min-height: 130px">
+          <label for="snippetName">Name</label>
+          <input
+            id="snippetName"
+            name="snippetName"
+            type="text"
+            placeholder="Snippet Name"
+            required
+            autocomplete="one-time-code" />
 
-    <!-- All the snippets go here! -->
-    <div id="snippet-container" style="margin-bottom: 0.5rem">
-      <div style="margin-bottom: 0.5rem" id="snippets"></div>
-      <div style="display: flex; justify-content: flex-end">
-        <button class="snippet-button" id="removeAll">Remove All</button>
+          <input id="snippetId" name="snippetId" type="hidden" autocomplete="one-time-code" />
+
+          <label for="snippetContent">Snippet</label>
+          <input id="snippetContent" name="snippetContent" type="hidden" autocomplete="one-time-code" />
+          <div id="quill-container">
+            <div id="new-snippet-input"></div>
+          </div>
+
+          <button type="submit">Save Snippet</button>
+        </form>
+      </div>
+
+      <div class="footer" style="display: flex; justify-content: flex-end; font-size: 1rem">
+        <p style="margin: 0; text-align: right; opacity: 0.8; font-size: 14px">
+          By Matt McInnis <br />
+          <span>Made with <span style="color: red; opacity: 0.8">❤️</span> in Toronto, Canada</span>
+        </p>
       </div>
     </div>
-
-    <!-- This form creates/edits snippets -->
-    <div id="form-container">
-      <form id="new-snippet-form" style="min-height: 130px">
-        <label for="snippetName">Name</label>
-        <input
-          id="snippetName"
-          name="snippetName"
-          type="text"
-          placeholder="Snippet Name"
-          required
-          autocomplete="one-time-code" />
-
-        <input id="snippetId" name="snippetId" type="hidden" autocomplete="one-time-code" />
-
-        <label for="snippetContent">Snippet</label>
-        <input id="snippetContent" name="snippetContent" type="hidden" autocomplete="one-time-code" />
-        <div id="new-snippet-input"></div>
-
-        <button type="submit">Save Snippet</button>
-      </form>
-    </div>
-
-    <div class="footer" style="display: flex; justify-content: flex-end; font-size: 1rem">
-      <p style="margin: 0; text-align: right; opacity:0.8; font-size: 14px;">
-         By Matt McInnis <br>
-        <span>Made with <span style="color: red; opacity: 0.8">❤️</span> in Toronto, Canada</span>
-      </p>
-    </div>
-  </div>
 
     <script src="js/utils.js"></script>
     <script src="js/createSnippet.js"></script>
@@ -64,8 +71,8 @@
     <script src="js/snippetManager.js"></script>
 
     <!-- ionicicons -->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script> -->
+    <!-- <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> -->
 
     <script src="popup.js"></script>
   </body>

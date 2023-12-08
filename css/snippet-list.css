@@ -1,0 +1,85 @@
+/*  
+  Defines the styles for the edit, delete (etc.) buttons
+*/
+@import "styles.css";
+
+.snippet-name {
+  margin-left: 0.8rem;
+  font-weight: 500;
+}
+
+#snippets li {
+  margin-bottom: 0.4rem;
+}
+
+/* General styling for all snippet buttons */
+.snippet-button {
+  font-size: calc(var(--base-font-size) - 2px);
+  border-radius: 3px;
+  font-weight: 500;
+  background: none;
+  color: #011936;
+  border-color: #011936;
+  margin: 0;
+  padding: 0.1rem 0.4rem;
+}
+
+/* Image buttons are containers for icons */
+.image-button {
+  width: calc(var(--image-button-font-size) + 0.4rem);
+  transition: 250ms;
+  font-size: var(--image-button-font-size);
+  border: none;
+  padding: 0;
+  display: inline-flex; /* Keeps the button's size as per the container/defined size */
+  justify-content: end;
+  align-items: center;
+}
+
+/* Copy Button --------------  */
+.copy-button {
+  width: 5rem;
+  transition: 0.3s;
+}
+
+.copy-button:after {
+  content: "»";
+  position: absolute;
+  opacity: 0;
+  right: -5px;
+}
+
+.copy-button:hover {
+  filter: none; /* remove this default filter */
+  padding-right: 24px;
+  padding-left: 8px;
+  transition: 0.3s;
+}
+
+.copy-button:hover:after {
+  transition: 0.3s;
+  right: 10px;
+  opacity: 1;
+}
+
+.copy-button.button-check:after {
+  content: "☑️";
+}
+
+/* Edit Button --------------  */
+.edit-button {
+  width: 3rem;
+  transition: 0.3s;
+}
+
+.edit-button:hover {
+  font-size: calc(var(--image-button-font-size) + 0.32rem);
+  stroke-width: 6px; /* affects the pencil */
+  --ionicon-stroke-width: 36px; /* affects the box */
+}
+
+/* Delete Button -----------  */
+.delete-button:hover {
+  transform: rotate(15deg) translate(0px, 2px);
+  font-size: calc(var(--image-button-font-size) + 0.2rem);
+}
