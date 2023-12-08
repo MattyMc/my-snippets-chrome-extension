@@ -1,28 +1,58 @@
 const utils = (() => {
-  const saveOrUpdateSnippet = (id, name, content) => {
+  const newSnippet = () => {
+    const newSnippetForm = document.getElementById("new-snippet-form");
+    // clear the form
+    newSnippetForm.reset();
+    // show the form
+    newSnippetForm.classList.toggle("d-none");
+    // move focus to the name input
+    document.getElementById("snippet-name").focus();
+  };
+
+  const buildSnippetHtmlFromTemplate = (snippet) => {
+    const snippetListItemTemplate = document.querySelector("#snippet-li-template");
+    const listItem = snippetListItemTemplate.content.cloneNode(true).querySelector("li");
+    listItem.setAttribute("id", `snippet-${snippet.id}`);
+    listItem.setAttribute("data-snippet-id", snippet.id);
+    listItem.querySelectorAll(".snippet-name")[0].innerHTML = snippet.name;
+    return listItem;
+  };
+
+  const saveOrUpdateSnippet = (id, name, htmlContent, plainTextContent, trixJsonContent) => {
     const snippets = getStoredSnippets();
     // Find the index of the snippet with the given ID
-    const snippetIndex = snippets.findIndex(snippet => snippet.id === id);
-  
+    const snippetIndex = snippets.findIndex((snippet) => snippet.id === id);
+
+    const snippet = { id, name, htmlContent, plainTextContent, trixJsonContent };
     if (snippetIndex !== -1) {
       // Snippet exists, update it
-      snippets[snippetIndex] = { id, name, content };
+      snippets[snippetIndex] = snippet;
+      console.log("Updated Snippet: ", snippet);
+      // update the snippet's name (if needed) in the snippet list
+      element = document.getElementById(`snippet-${id}`);
+      element.getElementsByClassName("snippet-name")[0].innerHTML = snippet.name;
     } else {
       // Snippet does not exist, add as new
-      snippets.push({ id, name, content });
+      snippets.push(snippet);
+      console.log("Created Snippet: ", snippet);
+      // add snippet to the ui
+      newSnippetElement = utils.buildSnippetHtmlFromTemplate(snippet);
+      document.getElementById("snippets").querySelector("ul").append(newSnippetElement);
     }
-  
+
     // Save the updated snippets array to localStorage
     localStorage.setItem("snippets", JSON.stringify(snippets));
-    location.reload(); // Consider a more efficient way to refresh the data on the page
+    // location.reload(); // Consider a more efficient way to refresh the data on the page
   };
-  
 
-  const copyToClipboard = (id, buttonElement) => {
+  const copyToClipboard = (buttonElement) => {
+    const id = buttonElement.closest("li").getAttribute("data-snippet-id");
+
     const snippets = getStoredSnippets();
-    const content = snippets.find(snippet => snippet.id === id).content;
-    const blobHtml = new Blob([content], { type: "text/html" });
-    const blobPlainText = new Blob([content], { type: "text/plain" }); // Assuming content is already plain text
+    const htmlContent = snippets.find((snippet) => snippet.id === id).htmlContent;
+    const plainTextContent = snippets.find((snippet) => snippet.id === id).plainTextContent;
+    const blobHtml = new Blob([htmlContent], { type: "text/html" });
+    const blobPlainText = new Blob([plainTextContent], { type: "text/plain" }); // Assuming content is already plain text
 
     const data = [new ClipboardItem({ "text/html": blobHtml, "text/plain": blobPlainText })];
 
@@ -46,17 +76,22 @@ const utils = (() => {
     location.reload();
   };
 
-  const getInnerText = (htmlString) => {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(htmlString, "text/html");
-    const innerText = doc.body.innerText;
-    return innerText;
+  const snippetListChange = () => {
+    const numSnippets = document.querySelectorAll("#snippets li").length;
+    if (numSnippets > 0) {
+      document.getElementById("remove-all-button").classList.remove("d-none");
+    } else {
+      document.getElementById("remove-all-button").classList.add("d-none");
+    }
   };
 
   return {
     saveOrUpdateSnippet,
+    snippetListChange,
+    buildSnippetHtmlFromTemplate,
     copyToClipboard,
     getStoredSnippets,
     removeAllSnippets,
+    newSnippet,
   };
 })();

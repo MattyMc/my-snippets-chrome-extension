@@ -10,6 +10,9 @@
 
 #snippets li {
   margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* General styling for all snippet buttons */
@@ -38,6 +41,7 @@
 
 /* Copy Button --------------  */
 .copy-button {
+  position: relative; /* needed since we absolutely position the hover effect */
   width: 5rem;
   transition: 0.3s;
 }

@@ -1,0 +1,28 @@
+@import "styles.css";
+
+div.trix-button-row {
+  font-size: 0.9rem;
+}
+
+/* hide undo/redo */
+span.trix-button-group--history-tools {
+  display: none;
+}
+
+/* no attachments */
+span.trix-button-group--file-tools {
+  display: none;
+}
+
+/* decrease spacing between button groups */
+trix-toolbar .trix-button-group:not(:first-child) {
+  margin-left: 1vw;
+}
+
+span.trix-button-group {
+  margin-bottom: 4px;
+}
+
+#new-snippet-form trix-editor:focus-within {
+  outline: -webkit-focus-ring-color auto 1px;
+}
