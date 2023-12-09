@@ -6,10 +6,12 @@
 
   // New Snippet Button
   document.getElementById("new-snippet-button").addEventListener("click", function () {
+    document.getElementById('snippet-container').classList.add('d-none');
     utils.newSnippet();
   });
 
   document.getElementById("cancel-new-snippet-button").addEventListener("click", function () {
+    document.getElementById('snippet-container').classList.remove('d-none');
     utils.newSnippet();
   });
 
@@ -27,6 +29,7 @@
       utils.copyToClipboard(button);
     } else if (action == "editSnippet") {
       editSnippet(button);
+      document.getElementById('snippet-container').classList.add('d-none');
     } else if (action == "deleteSnippet") {
       deleteSnippet(button);
     }

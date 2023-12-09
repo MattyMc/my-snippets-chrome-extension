@@ -48,6 +48,7 @@ const utils = (() => {
     localStorage.setItem("snippets", JSON.stringify(snippets));
     // Close and reset the form
     newSnippet();
+    document.getElementById('snippet-container').classList.remove('d-none');
   };
 
   const copyToClipboard = (buttonElement) => {
