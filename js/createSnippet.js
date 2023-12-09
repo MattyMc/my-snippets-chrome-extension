@@ -1,4 +1,17 @@
 const createSnippet = (() => {
+   // add keyboard shortcuts!
+   document.body.addEventListener("trix-initialize", event => {
+    const { toolbarElement } = event.target
+    const bulletButton = toolbarElement.querySelector("[data-trix-attribute=number]")
+    bulletButton.setAttribute("data-trix-key", "shift+7")
+  });
+
+   document.body.addEventListener("trix-initialize", event => {
+    const { toolbarElement } = event.target
+    const bulletButton = toolbarElement.querySelector("[data-trix-attribute=bullet]")
+    bulletButton.setAttribute("data-trix-key", "shift+8")
+  });
+
   function initializeTrix() {
     // Do not accept file uploads
     document.addEventListener("trix-file-accept", function (event) {
@@ -15,6 +28,8 @@ const createSnippet = (() => {
         e.target.form.requestSubmit();
       }
     });
+
+   
   }
 
   function submitSnippetForm(event) {
