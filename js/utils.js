@@ -78,8 +78,11 @@ const utils = (() => {
   };
 
   const removeAllSnippets = () => {
-    localStorage.removeItem("snippets");
-    location.reload();
+    const userConfirmed = confirm("Are you sure you want to delete this item?");
+    if (userConfirmed) {
+      localStorage.removeItem("snippets");
+      location.reload();
+    }
   };
 
   const snippetListChange = () => {
