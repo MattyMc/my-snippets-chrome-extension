@@ -1,10 +1,5 @@
 @import "simple.min.css";
 
-body {
-  width: 600px; /* Adjusted width */
-  padding: 10px;
-}
-
 :root {
   --standard-border-radius: 6px;
   --bg: #fffefc; /* the background */
@@ -15,7 +10,41 @@ body {
   /* --border: blue; */
   --base-font-size: 16px;
   --image-button-font-size: 1.4rem;
-  --quill-padding-x: 8px;
+  --input-padding-y: 0.4rem;
+  --input-padding-x: 0.6rem;
+  --input-border-radius: 3px;
+  --success-green: #1C7C54;
+}
+
+body {
+  width: 600px; /* Adjusted width */
+  padding: 10px;
+}
+
+button {
+  padding: 0.3rem 0.6rem;
+  font-size: 1rem;
+}
+
+button:enabled:hover {
+  box-shadow: 1px 1px var(--accent);
+  transition: 300ms;
+}
+
+.submit-button:hover {
+  transition: 250ms;
+  background-color: var(--success-green);
+  border-color: var(--success-green);
+}
+
+.submit-button:enabled:hover {
+  box-shadow: none;
+}
+
+input {
+  padding: var(--input-padding-y) var(--input-padding-x);
+  border-radius: var(--input-border-radius);
+  font-size: 1rem;
 }
 
 #form-container {
@@ -24,7 +53,7 @@ body {
 }
 
 .snippet-form-element {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
 .d-none {

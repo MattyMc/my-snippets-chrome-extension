@@ -28,32 +28,30 @@
       <!-- All the snippets go here! -->
       <div id="snippet-container" style="margin-bottom: 0.5rem">
         <div style="margin-bottom: 0.5rem" id="snippets"></div>
-        <div style="display: flex; justify-content: flex-end">
+        <div style="display: flex; justify-content: space-between">
+          <button id="new-snippet-button" class="snippet-button">New Snippet</button>
           <button class="snippet-button d-none" id="remove-all-button">Remove All</button>
         </div>
-      </div>
-
-      <div>
-        <button id="new-snippet-button" class="snippet-button">New Snippet</button>
       </div>
 
       <!-- This form creates/edits snippets -->
       <div id="form-container">
         <form id="new-snippet-form" style="min-height: 130px" class="d-none">
+          <h2 style="font-size: 1.5rem; margin-bottom: 0.8rem">New Snippet</h2>
           <div class="snippet-form-element">
-            <label for="snippet-name">Name</label>
+            <label for="snippet-name" style="font-weight: bold;">Name</label>
             <!-- prettier-ignore -->
-            <input id="snippet-name" name="snippet-name" type="text" placeholder="Snippet Name" required autocomplete="one-time-code" />
+            <input id="snippet-name-input" style="width: 100%;" name="snippet-name" type="text" placeholder="Snippet Name" required autocomplete="one-time-code" />
           </div>
 
           <input id="snippet-id" name="snippet-id" type="hidden" autocomplete="one-time-code" />
 
-          <div id="trix-container" class="snippet-form-element">
+          <div id="trix-container" class="" style="margin-bottom: 0.8rem">
             <input id="snippetContent" type="hidden" name="content" />
             <trix-editor input="snippetContent"></trix-editor>
           </div>
 
-          <button type="submit" class="snippet-form-element">Save Snippet</button>
+          <button type="submit" class="snippet-form-element submit-button">Save Snippet</button>
           <!-- prettier-ignore -->
           <button type="button" id="cancel-new-snippet-button" data-action="cancelNewSnippet" class="snippet-form-element button-outline">
             Cancel
@@ -81,7 +79,7 @@
       HTML TEMPLATES 
     -->
     <template id="snippet-li-template">
-      <li id="snippet-${snippet.id}" data-snippet-id="${snippet.id}">
+      <li id="snippet-${snippet.id}" data-snippet-id="${snippet.id}" class="">
         <div style="flex-grow: 1">
           <!-- prettier-ignore -->
           <button data-action="copyToClipboard" class="snippet-button copy-button" onmouseleave="(() => { this.classList.remove('button-check') })()">

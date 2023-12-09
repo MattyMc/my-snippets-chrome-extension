@@ -6,7 +6,7 @@ const utils = (() => {
     // show the form
     newSnippetForm.classList.toggle("d-none");
     // move focus to the name input
-    document.getElementById("snippet-name").focus();
+    document.getElementById("snippet-name-input").focus();
   };
 
   const buildSnippetHtmlFromTemplate = (snippet) => {
@@ -31,18 +31,23 @@ const utils = (() => {
       // update the snippet's name (if needed) in the snippet list
       element = document.getElementById(`snippet-${id}`);
       element.getElementsByClassName("snippet-name")[0].innerHTML = snippet.name;
+      // add the 'new-snippet' class to show a green dot indicator
+      element.classList.add('new-snippet')
     } else {
       // Snippet does not exist, add as new
       snippets.push(snippet);
       console.log("Created Snippet: ", snippet);
       // add snippet to the ui
       newSnippetElement = utils.buildSnippetHtmlFromTemplate(snippet);
+      // add the 'new-snippet' class to show a green dot indicator
+      newSnippetElement.classList.add('new-snippet')
       document.getElementById("snippets").querySelector("ul").append(newSnippetElement);
     }
 
     // Save the updated snippets array to localStorage
     localStorage.setItem("snippets", JSON.stringify(snippets));
-    // location.reload(); // Consider a more efficient way to refresh the data on the page
+    // Close and reset the form
+    newSnippet();
   };
 
   const copyToClipboard = (buttonElement) => {

@@ -8,6 +8,18 @@
   font-weight: 500;
 }
 
+#snippet-container li.new-snippet .copy-button::before {
+  position: absolute;
+  font-weight: 200;
+  content: '●'; /* Unicode character for a dot */
+  color: #629677; /* Green color for the dot */
+  color: var(--success-green); /* Green color for the dot */
+  font-size: 1rem;
+  transform: scale(0.7);
+  left: -1.5rem;
+  top: 1px;
+}
+
 #snippets li {
   margin-bottom: 0.4rem;
   display: flex;
@@ -18,7 +30,7 @@
 /* General styling for all snippet buttons */
 .snippet-button {
   font-size: calc(var(--base-font-size) - 2px);
-  border-radius: 3px;
+  border-radius: var(--input-border-radius);
   font-weight: 500;
   background: none;
   color: #011936;
@@ -37,6 +49,10 @@
   display: inline-flex; /* Keeps the button's size as per the container/defined size */
   justify-content: end;
   align-items: center;
+}
+
+.image-button:enabled:hover {
+  box-shadow: none;
 }
 
 /* Copy Button --------------  */
@@ -58,6 +74,10 @@
   padding-right: 24px;
   padding-left: 8px;
   transition: 0.3s;
+}
+
+.copy-button:enabled:hover {
+  box-shadow: none;
 }
 
 .copy-button:hover:after {

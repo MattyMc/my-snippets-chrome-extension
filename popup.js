@@ -1,4 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  createSnippet.initializeQuill();
+  createSnippet.initializeTrix();
   loadSnippets.loadSnippets();
 });

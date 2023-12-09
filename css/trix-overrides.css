@@ -14,6 +14,13 @@ span.trix-button-group--file-tools {
   display: none;
 }
 
+trix-editor {
+  /* override to match our variables */
+  padding: var(--input-padding-y) var(--input-padding-x);
+  border-radius: var(--input-border-radius);
+  font-size: 1rem;
+}
+
 /* decrease spacing between button groups */
 trix-toolbar .trix-button-group:not(:first-child) {
   margin-left: 1vw;
