@@ -19,6 +19,7 @@ trix-editor {
   padding: var(--input-padding-y) var(--input-padding-x);
   border-radius: var(--input-border-radius);
   font-size: 1rem;
+  min-height: 10rem;
 }
 
 /* decrease spacing between button groups */
