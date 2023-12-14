@@ -1,6 +1,6 @@
 const loadSnippets = (() => {
   const loadSnippets = () => {
-    const snippets = utils.getStoredSnippets();
+    const snippets = utils.getStoredSnippets() || [];
     const snippetContainer = document.getElementById("snippets");
 
     // Initialize snippetContainer with an unordered list

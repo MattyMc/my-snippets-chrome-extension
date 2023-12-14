@@ -11,7 +11,7 @@
 #snippet-container li.new-snippet .copy-button::before {
   position: absolute;
   font-weight: 200;
-  content: '●'; /* Unicode character for a dot */
+  content: "●"; /* Unicode character for a dot */
   color: #629677; /* Green color for the dot */
   color: var(--success-green); /* Green color for the dot */
   font-size: 1rem;
@@ -96,7 +96,7 @@
   transition: 0.3s;
 }
 
-.edit-button:hover {
+.grow-on-hover:hover {
   font-size: calc(var(--image-button-font-size) + 0.32rem);
   stroke-width: 6px; /* affects the pencil */
   --ionicon-stroke-width: 36px; /* affects the box */
@@ -106,4 +106,13 @@
 .delete-button:hover {
   transform: rotate(15deg) translate(0px, 2px);
   font-size: calc(var(--image-button-font-size) + 0.2rem);
+}
+
+#restore-snippets-file-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
