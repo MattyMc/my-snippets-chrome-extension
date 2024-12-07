@@ -13,11 +13,11 @@
   --input-padding-y: 0.4rem;
   --input-padding-x: 0.6rem;
   --input-border-radius: 3px;
-  --success-green: #1C7C54;
+  --success-green: #1c7c54;
 }
 
 body {
-  width: 600px; /* Adjusted width */
+  width: 700px; /* Adjusted width */
   padding: 10px;
 }
 
